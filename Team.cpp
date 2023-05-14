@@ -27,6 +27,21 @@ bool Team::addPlayer(Player* playerInput)   {
     return false;
 }
 
+// \\ bool Clinic::add_cage(Cage new_cage){
+//  \\    Clinic clinicCages;
+//   \\   for (int k=0;k<clinicSize;k++){
+//    \\    if (cages[k].name=="" && cages[k].number==0){
+//     \\        cages[k].name=new_cage.name;
+//      \\         cages[k].number=new_cage.number;
+//       \\       break;
+//      \\    }
+//     \\     else (cages[k].name!="" && cages[k].number!=0);{
+//    \\          return 0;
+//   \\       }
+//  \\   }
+// \\    return 1;
+//}
+
 void Team::teamStats()  {
     int totalServe = 0, totalSet = 0, totalDig = 0, totalSpike = 0;
     for (int i = 0; i < numPlayers; i++)    {
