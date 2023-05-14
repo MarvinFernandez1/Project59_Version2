@@ -7,7 +7,7 @@ using namespace std;
 
 class Spiker : public Skill {
     public:
-    Digger();
+    Spiker();
     int attemptServe();
     int attemptDig ();
     int attemptSet ();
