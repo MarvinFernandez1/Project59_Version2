@@ -4,18 +4,18 @@ using namespace std;
 Spiker::Spiker(){
 }
 
-int Spiker::attemptServe(){
+bool Spiker::attemptServe(){
   
 }
 
-int Spiker::attemptDig(){
+bool Spiker::attemptDig(){
   
 }
 
-int Spiker::attemptSet(){
+bool Spiker::attemptSet(){
   
 }
 
-int Spiker::attemptSpike(){
+bool Spiker::attemptSpike(){
   
 }
