@@ -28,6 +28,7 @@ void Game::Start_game(Team enteredTeam, Team presetTeam)    {
 }
 
 // play function - simulates a game by running through sequence of actions
+void Game::play(){ // mic
 while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
     
     // simulate one point
@@ -35,7 +36,7 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
     bool action = true;
 
     while(action == true) {
-        Team* servingTeam = 
+        Team* servingTeam = team1
     }
 
 }
