@@ -8,9 +8,9 @@ using namespace std;
 class Spiker : public Skill {
     public:
     Spiker();
-    int attemptServe();
-    int attemptDig ();
-    int attemptSet ();
-    int attemptSpike ();
+    bool attemptServe();
+    bool attemptDig ();
+    bool attemptSet ();
+    bool attemptSpike ();
 };
 #endif //SPIKER_H
