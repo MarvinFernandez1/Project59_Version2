@@ -8,9 +8,9 @@ using namespace std;
 class Digger : public Skill {
     public:
     Digger();
-    int attemptServe();
-    int attemptDig ();
-    int attemptSet ();
-    int attemptSpike ();
+    bool attemptServe();
+    bool attemptDig ();
+    bool attemptSet ();
+    bool attemptSpike ();
 };
 #endif //DIGGER_H
