@@ -7,7 +7,7 @@ using namespace std;
 
 class Setter : public Skill {
     public:
-    Digger();
+    Setter();
     int attemptServe();
     int attemptDig ();
     int attemptSet ();
