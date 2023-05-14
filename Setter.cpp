@@ -1,6 +1,21 @@
 #include "Setter.h"
 using namespace std;
 
-Digger::Digger(){
+Setter::Setter(){
 }
 
+int Setter::attemptServe(){
+  
+}
+
+int Setter::attemptDig(){
+  
+}
+
+int Setter::attemptSet(){
+  
+}
+
+int Setter::attemptSpike(){
+  
+}
