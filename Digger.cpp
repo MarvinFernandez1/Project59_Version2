@@ -4,18 +4,18 @@ using namespace std;
 Digger::Digger(){
 }
 
-int Digger::attemptServe(){
+bool Digger::attemptServe(){
 
 }
 
-int Digger::attemptDig(){
+bool Digger::attemptDig(){
   
 }
 
-int Digger::attemptSet(){
+bool Digger::attemptSet(){
   
 }
 
-int Digger::attemptSpike(){
+bool Digger::attemptSpike(){
   
 }
