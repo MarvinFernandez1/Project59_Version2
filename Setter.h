@@ -8,9 +8,9 @@ using namespace std;
 class Setter : public Skill {
     public:
     Setter();
-    int attemptServe();
-    int attemptDig ();
-    int attemptSet ();
-    int attemptSpike ();
+    bool attemptServe();
+    bool attemptDig ();
+    bool attemptSet ();
+    bool attemptSpike ();
 };
 #endif //SETTER_H
