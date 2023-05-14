@@ -4,18 +4,18 @@ using namespace std;
 Setter::Setter(){
 }
 
-int Setter::attemptServe(){
+bool Setter::attemptServe(){
   
 }
 
-int Setter::attemptDig(){
+bool Setter::attemptDig(){
   
 }
 
-int Setter::attemptSet(){
+bool Setter::attemptSet(){
   
 }
 
-int Setter::attemptSpike(){
+bool Setter::attemptSpike(){
   
 }
