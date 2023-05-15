@@ -1,5 +1,6 @@
 #include <iostream> 
 #include <string>
+#include <random>
 #include "Skill.h"
 using namespace std;
 
@@ -32,9 +33,32 @@ void Skill::set_setAbility (int setAbility) {
 void Skill::set_spikeAbility (int spikeAbility) {
     this->spikeAbility = spikeAbility;
 }
+
 //Determine 
 bool Skill::attemptServe (int serveAbility) {
     
+    // create array of probability
+    int serveArray[100] = {0};
+    int serveSkill = serveAbility;
+    for(int i = 0; i < serveSkill - 1; i++) {
+        serveArray[i] = 1;
+    }
+
+    // generate a rand num between 0-99
+    int randomNum = rand() % 100;
+
+    // determine if sucessful
+    if(serveArray[randomNum] == 1) {
+        set_attemptServes(get_attemptServes()+1);
+        set_successfulServes(get_attemptServes()+1);
+        return true;
+    }
+    
+    if(serveArray[randomNum] == 0)  {
+        set_attemptServes(get_attemptServes()+1);
+        return false;
+    }
+
 }
 bool Skill::attemptDig (int digAbility) {
     return 0;

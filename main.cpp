@@ -6,9 +6,16 @@ using namespace std;
 
 int main() {
 //Player(name, starting position, role on team)
-    Player player("Michael", "Backcourt", "Spiker");
+    Player Player("Michael", "Backcourt", "Spiker");
     
     cout << "Let the battle begin!" << endl;
-
-    cout << player.get_name() << " wins!" << endl;    
+    
+    /*
+    if(player.attemptServe())   {
+    cout << player.get_name() << " wins!" << endl;
+    }
+    else(
+        cout << player.get_name() << " loses!" << endl;
+    )
+    */
 }
