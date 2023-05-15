@@ -36,6 +36,7 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
     bool action = true;
 
     while(action == true) {
+<<<<<<< HEAD
         Team* servingTeam = team1
         // player 6 serves first (back right)
         // team1[6].attemptServe   
@@ -51,6 +52,47 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
         // spiker
         // if setter in position 1,2,3 (generate a number between 1,2,3 to decide which front court player spikes except setter) 
         // if setter in position 4,5,6 (generate a number between 1,2,3 to decide which frontcourt player spikes)
+=======
+        Team* servingTeam = team1;
+    // intj;
+    // servingTeam team[j]=attemptServe()
+    //j++;
+    // while(ball = in){
+//         start simming
+    } 
+    else{
+        Team* servingTeam = team2;
+    }
+>>>>>>> c8e6bbe9c3ca97eaeaefe7de645a57012cfe81f1
     }
 
-}
+//     READ AND WRITE CODEBELOW
+    //takes input and creates a new file that can be opened
+// void .H::NewFile(string newFileName){
+//     cout<<"Enter desired text\n";
+//     cin>>input;
+//     ofstream outFile(newFileName);
+//     outFile << input; //input what you want to put into new file
+//     outFile.close();
+// }
+    
+    //function that creates file
+// void .H::ReadFile(string file){
+//     ifstream inFile(file);
+//     if(inFile.is_open()){
+//         while(getline (inFile,readFile)){
+//         cout<< readFile <<endl;
+//     }
+//     inFile.close();
+//     }
+//     else{
+//         cout << "unable to open file" << endl; 
+//     }
+// }
+    
+//        public:
+    //sets data members
+//     string fileName;
+//     string newFileName;
+//     string readFile;
+//     string input;
