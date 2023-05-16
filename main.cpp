@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include "Player.h"
-
+#include "ReadnW.h"
 using namespace std;
 
 int main() {
@@ -14,5 +14,15 @@ int main() {
     cout << player.get_name() << " wins!" << endl;
 
     cout << player.get_name() << " wins!" << endl;
+
+
+
+//     ReadnW rw1;
+//     rw1.writeFile("te");
+//     rw1.inFile("te");
+    
+    
+    return 0;
+
     
     }
