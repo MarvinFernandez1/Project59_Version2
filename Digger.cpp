@@ -3,6 +3,9 @@
 #include "Digger.h"
 using namespace std;
 
+//Create object digger to use with functions
+Digger digger;
+
 Digger::Digger () {
     this->serveAbility = serveAbility;
     this->digAbility = digAbility;
@@ -22,15 +25,17 @@ bool Digger::attemptDig () {
     // generate a rand num between 0-99
     int randomNum = rand() % 100;
 
-    // determine if sucessful
+    // if dig successful
     if(digArray[randomNum] == 1) {
         set_attemptDigs(get_attemptDigs()+1);
         set_successfulDigs(get_attemptDigs()+1);
+        cout << digger.get_name() << " digged successfully!" << endl;
         return true;
     }
-    
+    //if dig not successful
     if(digArray[randomNum] == 0)  {
         set_attemptDigs(get_attemptDigs()+1);
+        cout << digger.get_name() << " did not dig successfully." << endl;
         return false;
     }
 
@@ -46,15 +51,17 @@ bool Digger::attemptSet () {
     // generate a rand num between 0-99
     int randomNum = rand() % 100;
 
-    // determine if sucessful
+    // if set successful
     if(setArray[randomNum] == 1) {
         set_attemptSets(get_attemptSets()+1);
         set_successfulSets(get_attemptSets()+1);
+        cout << digger.get_name() << " set successfully!" << endl;
         return true;
     }
-    
+    //if set not successful
     if(setArray[randomNum] == 0)  {
         set_attemptSets(get_attemptSets()+1);
+        cout << digger.get_name() << " did not set successfully." << endl;
         return false;
     }
 
@@ -70,15 +77,17 @@ bool Digger::attemptSpike () {
     // generate a rand num between 0-99
     int randomNum = rand() % 100;
 
-    // determine if sucessful
+    // if spike successful
     if(spikeArray[randomNum] == 1) {
         set_attemptSpikes(get_attemptSpikes()+1);
         set_successfulSpikes(get_attemptSpikes()+1);
+        cout << digger.get_name() << " spike successfully!" << endl;
         return true;
     }
-    
+    // if spike not successful
     if(spikeArray[randomNum] == 0)  {
         set_attemptSpikes(get_attemptSpikes()+1);
+        cout << digger.get_name() << " did not spike successfully." << endl;
         return false;
     }
 

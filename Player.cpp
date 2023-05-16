@@ -7,12 +7,12 @@ using namespace std;
 //Default Constructor
 Player::Player () {
     this->name = "No Name";
-    this->startPosition = "No Position";
+    this->startPosition = 0;
     this->role = "No Role";
 }
 
 //Set Contructor
-Player::Player (string name, string startPosition, string role) {
+Player::Player (string name, int startPosition, string role) {
     this->name = name;
     this->startPosition = startPosition;
     this->role = role;
@@ -20,7 +20,7 @@ Player::Player (string name, string startPosition, string role) {
 
 //Getting Variables
 string Player::get_name() {return name;}
-string Player::get_startPosition () {return startPosition;}
+int Player::get_startPosition () {return startPosition;}
 string Player::get_role () {return role;}
 
 int Player::get_attemptServes() {return attemptServes;}
@@ -33,7 +33,7 @@ int Player::get_successfulSets() {return successfulSets;}
 int Player::get_successfulSpikes() {return successfulSpikes;}
 
 //Setting Variables
-void Player::set_startPosition(string startPosition) {
+void Player::set_startPosition(int startPosition) {
     this->startPosition = startPosition;
 }
 void Player::set_role(string role) {
