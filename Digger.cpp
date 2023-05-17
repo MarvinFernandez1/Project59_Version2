@@ -12,7 +12,19 @@ Digger::Digger () {
     this->setAbility = setAbility;
     this->spikeAbility = spikeAbility;
 }
-bool Digger::attemptDig () {
+
+Digger::Digger(string name, int startPosition, string role, int serveAbility, int digAbility, int setAbility, int spikeAbility) {
+    this->name = name;
+    this->startPosition = startPosition;
+    this->role = role;
+    this->serveAbility = serveAbility;
+    this->digAbility = digAbility;
+    this->setAbility = setAbility;
+    this->spikeAbility = spikeAbility;
+}
+
+
+bool Digger::attemptDig() {
         
     // create array of probability
     int digArray[100] = {0};

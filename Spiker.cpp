@@ -12,6 +12,16 @@ Spiker::Spiker () {
     this->setAbility = setAbility;
     this->spikeAbility = spikeAbility;
 }
+
+Spiker::Spiker(string name, int startPosition, string role, int serveAbility, int digAbility, int setAbility, int spikeAbility) {
+    this->name = name;
+    this->startPosition = startPosition;
+    this->role = role;
+    this->serveAbility = serveAbility;
+    this->digAbility = digAbility;
+    this->setAbility = setAbility;
+    this->spikeAbility = spikeAbility;
+}
 bool Spiker::attemptDig () {
         
     // create array of probability

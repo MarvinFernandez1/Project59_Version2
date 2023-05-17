@@ -33,8 +33,13 @@ void Game::setScoreTeam2(int scoreTeam2)  {
 int Game::getScoreTeam1()   {return scoreTeam1;}
 int Game::getScoreTeam2()   {return scoreTeam2;}
 
+// create opposing team
+Team* Game::createOpposingTeam()  {
+
+}
+
 // start game - initialise two teams in seperate arrays
-void Game::Start_game(Team enteredTeam, Team presetTeam)    {
+void Game::Start_game(Team* enteredTeam, Team* presetTeam)    {
     this->team1 = enteredTeam;
     this->team2 = presetTeam;
 }
@@ -56,9 +61,9 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
         
         // run through actions
         // serve team 1
-        if (team1[5]->attemptServe()) {
+        if (team1->getPlayer(3)->attemptDig()) {    // change to SERVE
                 action = true;
-            }
+        }
             else {
                 action = false;
                 continue; // Go back to the beginning of the outer loop for the next point
@@ -68,15 +73,16 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
             // determine where setter is
             int positionSetter = 0;
             for(int i=0; i < 5; i++)    {
-                if(team2[i]->getRole() == "Setter") {
+                if(team2->getPlayer(i)->get_role() == "Setter") {
                     positionSetter = i;
+                    break;
                 }
             }
             
             // if setter in position 3, 4, 5: (another backcourt player (3, 4, 5) must dig first)
             switch (positionSetter) {
                 case 3: // player 4 digs
-                    if (team2[4]->attemptDig()) {
+                    if (team2->getPlayer(4)->attemptDig()) {
                         action = true;
                     }
                     else {
@@ -86,7 +92,7 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
                     break;
 
                 case 4: // player 5 digs
-                    if (team2[5]->attemptDig()) {
+                    if (team2->getPlayer(3)->attemptDig()) {
                         action = true;
                     }
                     else {
@@ -96,7 +102,7 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
                     break;
 
                 case 5: // player 4 digs
-                    if (team2[4]->attemptDig()) {
+                    if (team2->getPlayer(4)->attemptDig()) {
                         action = true;
                     }
                     else {
@@ -107,11 +113,11 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
             }            
 
             // if setter in position 0,1,2 (generate a number between 3,4,5 to decide which backcourt player digs)
+            int randomPosition = 0;
             switch (positionSetter)   {
                 case 0: case 1: case 2:     // player 3,4 or 5 digs
-                int randomPosition = 0;
                 randomPosition = (rand() % 3) + 3;  // need num between 3 and 5
-                if(team2[randomPosition]->attemptDig()) {
+                if(team2->getPlayer(randomPosition)->attemptDig()) {
                     action = true;
                 }
                 else {
@@ -121,7 +127,7 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
             }
 
         // set team 2
-        if (team2[positionSetter]->attemptSet()) {
+        if (team2->getPlayer(positionSetter)->attemptSet()) {
             action = true;
         }
         else {
@@ -133,7 +139,7 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
             // if setter in position 0, 1, 2: (another frontcourt player () must spike first)
             switch (positionSetter) {
                 case 0: // player 1 spikes
-                    if (team2[1]->attemptSpike()) {
+                    if (team2->getPlayer(1)->attemptSpike()) {
                         action = true;
                     }
                     else {
@@ -143,7 +149,7 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
                     break;
 
                 case 1: // player 0 spikes
-                    if (team2[0]->attemptSpike()) {
+                    if (team2->getPlayer(0)->attemptSpike()) {
                         action = true;
                     }
                     else {
@@ -153,7 +159,7 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
                     break;
 
                 case 2: // player 1 spikes
-                    if (team2[1]->attemptSpike()) {
+                    if (team2->getPlayer(1)->attemptSpike()) {
                         action = true;
                     }
                     else {
@@ -167,7 +173,7 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
             switch (positionSetter)    {
                 case 3: case 4: case 5:     // player 3,4 or 5 digs
                 randomPosition = (rand() % 3) + 3;  // need num between 0 and 2
-                if(team2[randomPosition]->attemptSpike()) {
+                if(team2->getPlayer(randomPosition)->attemptSpike()) {
                     action = true;
                 }
                 else {

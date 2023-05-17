@@ -50,6 +50,32 @@ class Player {
     void set_successfulSets (int successfulSets);
     void set_successfulSpikes (int successfulSpikes);
 
+    virtual bool attemptDig()   {
+        return false;
+    }
 
+    virtual bool attemptSet()   {
+        return false;
+    }
+
+    virtual bool attemptSpike()   {
+        return false;
+    }
+
+    virtual int get_serveAbility () {
+        return false;
+    }
+
+    virtual int get_digAbility () {
+        return false;
+    }
+
+    virtual int get_setAbility () {
+        return false;
+    }
+
+    virtual int get_spikeAbility () {
+        return false;
+    }
 };
 #endif // PLAYER_H

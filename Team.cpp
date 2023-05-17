@@ -5,26 +5,34 @@ using namespace std;
 
 // default constructor 
 Team::Team()    {
-    this->numPlayers = 6;
+    this->numPlayers = 5;
     this->squad = new Player*[numPlayers];
     this->index = 0;
     this->name = "NULL";
 }
 
 Team::Team(string name)    {
-    this->numPlayers = 6;
+    this->numPlayers = 5;
     this->squad = new Player*[numPlayers];
     this->index = 0;
     this->name = name;
 }
 
 bool Team::addPlayer(Player* playerInput)   {
-    if(count < numPlayers)  {
+    if(index < numPlayers)  {
         squad[index] = playerInput;
         index++;
+        cout << playerInput->get_name() << " added to the lineup!" << endl;
         return true;
     }
     return false;
+}
+
+Player* Team::getPlayer(int index)  {
+    if (index >= 0 && index < numPlayers) {
+        return squad[index];
+    }
+    return nullptr;
 }
 
 void Team::teamStats()  {

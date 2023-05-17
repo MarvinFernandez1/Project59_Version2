@@ -2,6 +2,7 @@
 #define TEAM_H
 #include <iostream> 
 #include <string>
+#include "Player.h"
 using namespace std;
 
 class Team {
@@ -12,7 +13,9 @@ class Team {
     string name;
 
     public:
+    Team();
     Team(string name);
+    Player* getPlayer(int index);
     bool addPlayer(Player* playerInput);
     void teamStats();
     ~Team();

@@ -13,6 +13,16 @@ Setter::Setter () {
     this->spikeAbility = spikeAbility;
 }
 
+Setter::Setter(string name, int startPosition, string role, int serveAbility, int digAbility, int setAbility, int spikeAbility) {
+    this->name = name;
+    this->startPosition = startPosition;
+    this->role = role;
+    this->serveAbility = serveAbility;
+    this->digAbility = digAbility;
+    this->setAbility = setAbility;
+    this->spikeAbility = spikeAbility;
+}
+
 bool Setter::attemptDig () {
         
     // create array of probability

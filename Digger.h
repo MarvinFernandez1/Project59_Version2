@@ -8,8 +8,9 @@ using namespace std;
 class Digger : public Skill {
     public:
     Digger();
-    int attemptDig ();
-    int attemptSet ();
-    int attemptSpike ();
+    Digger(string name, int startPosition, string role, int serveAbility, int digAbility, int setAbility, int spikeAbility);
+    bool attemptDig ();
+    bool attemptSet ();
+    bool attemptSpike ();
 };
 #endif //DIGGER_H

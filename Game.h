@@ -2,6 +2,7 @@
 #define GAME_H
 #include <iostream> 
 #include <string>
+#include "Team.h"
 using namespace std;
 
 class Game {
@@ -17,9 +18,10 @@ class Game {
     public:
     Game();
     Game(int winPoints, string oppositionDifficulty);
-    void Start_game(Team enteredTeam, Team presetTeam);
+    void Start_game(Team* enteredTeam, Team* presetTeam);
     void play();
     void printScore();
+    Team* createOpposingTeam();
 
     void setScoreTeam1(int scoreTeam1);
     void setScoreTeam2(int scoreTeam2);
