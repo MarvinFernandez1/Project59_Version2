@@ -19,5 +19,7 @@ class Team {
     bool addPlayer(Player* playerInput);
     void teamStats();
     ~Team();
+
+    int getIndex();
 };
 #endif

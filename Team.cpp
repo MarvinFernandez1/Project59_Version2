@@ -18,8 +18,12 @@ Team::Team(string name)    {
     this->name = name;
 }
 
+int Team::getIndex()    {
+    return index;
+}
+
 bool Team::addPlayer(Player* playerInput)   {
-    if(index < numPlayers)  {
+    if(index <= numPlayers)  {
         squad[index] = playerInput;
         index++;
         cout << playerInput->get_name() << " added to the lineup!" << endl;
@@ -49,11 +53,13 @@ void Team::teamStats()  {
     cout << "Team Spike Ability: " << totalSpike/6 << endl;
 }
 
-// check if need to save team
-Team::~Team()   {
+// Team destructor
+Team::~Team() {
+    for (int i = 0; i < numPlayers; i++) {
+        delete squad[i];
+    }
     delete[] squad;
 }
-
 
 // \\ bool Clinic::add_cage(Cage new_cage){
 //  \\    Clinic clinicCages;

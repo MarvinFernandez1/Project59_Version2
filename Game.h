@@ -18,10 +18,11 @@ class Game {
     public:
     Game();
     Game(int winPoints, string oppositionDifficulty);
-    void Start_game(Team* enteredTeam, Team* presetTeam);
+    ~Game();
+    void Start_game(Team* enteredTeam);
     void play();
     void printScore();
-    Team* createOpposingTeam();
+    void createOpposingTeam();
 
     void setScoreTeam1(int scoreTeam1);
     void setScoreTeam2(int scoreTeam2);

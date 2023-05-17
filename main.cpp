@@ -12,6 +12,7 @@ using namespace std;
 
 int main() {
 //Player(name, starting position, role on team)
+    
     Player* P1 = new Digger("Michael",0, "Digger", 60, 50, 20, 80);
     Player* P2 = new Setter("Kien",3,"Setter",83,76,88,72);
     Player* P3 = new Spiker("Marvin",5,"Spiker",67,23,80,75);
@@ -21,21 +22,21 @@ int main() {
 
 
     // create team
-    Team binChickens;
+    Team t1("Bin Chickens");
+    Team* userTeam = &t1;
 
-    binChickens.addPlayer(P1);
-    binChickens.addPlayer(P2);
-    binChickens.addPlayer(P3);
-    binChickens.addPlayer(P4);
-    binChickens.addPlayer(P5);
-    binChickens.addPlayer(P6);
+    t1.addPlayer(P1);
+    t1.addPlayer(P2);
+    t1.addPlayer(P3);
+    t1.addPlayer(P4);
+    t1.addPlayer(P5);
+    t1.addPlayer(P6);
     
 
-    // start game
-    //Game round1(5,"easy");
-
-
-
+    // prepare game
+    Game round1(5,"easy");
+    round1.createOpposingTeam();  
+    round1.Start_game(userTeam); //WHY DOES THIS LINE MAKE THE TERMINAL PAUSE FOR 2 SECONDS BEFORE EXITING? - memory could not be read
 
     //
 
@@ -46,9 +47,13 @@ int main() {
     delete P4;
     delete P5;
     delete P6;
-
+    
 
     cout << "Let the battle begin!" << endl;
+
+    // cout.flush();
+
+    return 0;
     
     /*
     if(player.attemptServe())   {

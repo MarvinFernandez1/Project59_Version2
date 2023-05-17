@@ -1,6 +1,9 @@
 #include <iostream> 
 #include <string>
 #include "Game.h"
+#include "Setter.h"
+#include "Spiker.h"
+#include "Digger.h"
 using namespace std;
 
 // default constructor 
@@ -9,7 +12,9 @@ Game::Game()    {
     this->scoreTeam2 = 0;
     this->gameOn = false;
     this->oppositionDifficulty = "easy";
-    this->winPoints = 1;
+    this->winPoints = 1; 
+    this->team1 = new Team();
+    this->team2 = new Team();
 }
 
 // set constructor
@@ -19,6 +24,14 @@ Game::Game(int winPoints, string oppositionDifficulty)  {
     this->gameOn = false;
     this->oppositionDifficulty = oppositionDifficulty;
     this->winPoints = winPoints;
+    this->team1 = new Team();
+    this->team2 = new Team(); 
+}
+
+// destructor
+Game::~Game()   {
+    delete team1;
+    delete team2;
 }
 
 // setters and getters
@@ -34,15 +47,53 @@ int Game::getScoreTeam1()   {return scoreTeam1;}
 int Game::getScoreTeam2()   {return scoreTeam2;}
 
 // create opposing team
-Team* Game::createOpposingTeam()  {
+void Game::createOpposingTeam()  {
+    // Create preset players with fixed skill levels
+    Player* player1 = new Setter("Opposing Player 1", 0, "Setter", 80, 70, 60, 50);
+    Player* player2 = new Digger("Opposing Player 2", 1, "Digger", 70, 60, 80, 50);
+    Player* player3 = new Spiker("Opposing Player 3", 2, "Spiker", 60, 50, 70, 80);
+    Player* player4 = new Digger("Opposing Player 4", 3, "Digger", 70, 80, 60, 50);
+    Player* player5 = new Digger("Opposing Player 5", 4, "Digger", 60, 70, 80, 50);
+    Player* player6 = new Spiker("Opposing Player 6", 5, "Spiker", 50, 60, 70, 80);
 
+    // Add the players to the opposing team
+    team2->addPlayer(player1);
+    cout << team2->getIndex() << endl;
+    team2->addPlayer(player2);
+    cout << team2->getIndex() << endl;
+    team2->addPlayer(player3);
+    cout << team2->getIndex() << endl;
+    team2->addPlayer(player4);
+    cout << team2->getIndex() << endl;
+    team2->addPlayer(player5);
+    cout << team2->getIndex() << endl;
+    team2->addPlayer(player6);
+    cout << team2->getIndex() << endl;
+
+    // delete created players
+    delete player1;
+    delete player2;
+    delete player3;
+    delete player4;
+    delete player5;
+    delete player6;
 }
+
 
 // start game - initialise two teams in seperate arrays
-void Game::Start_game(Team* enteredTeam, Team* presetTeam)    {
-    this->team1 = enteredTeam;
-    this->team2 = presetTeam;
+void Game::Start_game(Team* enteredTeam) {
+    delete team1;
+    team1 = enteredTeam; 
+    cout << team1->getPlayer(3)->get_name() << endl;
+    
+   /*
+    // list starting Lineup
+    cout << "Starting Lineup: " << endl;
+    cout << team1->getPlayer(0)->get_name() << "    "  << team1->getPlayer(1)->get_name() << "    " << team1->getPlayer(2)->get_name() << endl;
+    cout << team1->getPlayer(5)->get_name() << "    "  << team1->getPlayer(4)->get_name() << "    " << team1->getPlayer(3)->get_name() << endl;
+    */
 }
+
 
 // play function - simulates a game by running through sequence of actions - NEED TO CHANGE SCORES AFTER ACTION
 void Game::play(){ 
