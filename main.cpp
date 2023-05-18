@@ -34,9 +34,9 @@ int main() {
     
 
     // prepare game
-    Game round1(5,"easy");
-    round1.createOpposingTeam();  
-    round1.Start_game(userTeam); //WHY DOES THIS LINE MAKE THE TERMINAL PAUSE FOR 2 SECONDS BEFORE EXITING? - memory could not be read
+    // Game round1(5,"easy");
+    //round1.createOpposingTeam();  
+    // round1.Start_game(userTeam); //WHY DOES THIS LINE MAKE THE TERMINAL PAUSE FOR 2 SECONDS BEFORE EXITING? - memory could not be read
 
     //
 
