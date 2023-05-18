@@ -39,13 +39,13 @@ bool Setter::attemptDig () {
     if(digArray[randomNum] == 1) {
         set_attemptDigs(get_attemptDigs()+1);
         set_successfulDigs(get_attemptDigs()+1);
-        cout << setter.get_name() << " digged successfully!" << endl;
+        cout << this->name << " digged successfully!" << endl;
         return true;
     }
     // if dig not successful
     if(digArray[randomNum] == 0)  {
         set_attemptDigs(get_attemptDigs()+1);
-        cout << setter.get_name() << " did not dig successfully." << endl;
+        cout << this->name << " did not dig successfully." << endl;
         return false;
     }
     return false;
@@ -67,13 +67,13 @@ bool Setter::attemptSet () {
     if(setArray[randomNum] == 1) {
         set_attemptSets(get_attemptSets()+1);
         set_successfulSets(get_attemptSets()+1);
-        cout << setter.get_name() << " set successfully!" << endl;
+        cout << this->name << " set successfully!" << endl;
         return true;
     }
     // if set not successful
     if(setArray[randomNum] == 0)  {
         set_attemptSets(get_attemptSets()+1);
-        cout << setter.get_name() << " did not set successfully." << endl;
+        cout << this->name << " did not set successfully." << endl;
         return false;
     }
     return false;
@@ -93,13 +93,13 @@ bool Setter::attemptSpike () {
     if(spikeArray[randomNum] == 1) {
         set_attemptSpikes(get_attemptSpikes()+1);
         set_successfulSpikes(get_attemptSpikes()+1);
-        cout << setter.get_name() << " spiked successfully!" << endl;
+        cout << this->name << " spiked successfully!" << endl;
         return true;
     }
     // if spike not successful
     if(spikeArray[randomNum] == 0)  {
         set_attemptSpikes(get_attemptSpikes()+1);
-        cout << setter.get_name() << " did not spike successfully." << endl;
+        cout << this->name << " did not spike successfully." << endl;
         return false;
     }
     return false;

@@ -59,17 +59,11 @@ void Game::createOpposingTeam()  {
 
     // Add the players to the opposing team
     team2->addPlayer(player1);
-    cout << team2->getIndex() << endl;
     team2->addPlayer(player2);
-    cout << team2->getIndex() << endl;
     team2->addPlayer(player3);
-    cout << team2->getIndex() << endl;
     team2->addPlayer(player4);
-    cout << team2->getIndex() << endl;
     team2->addPlayer(player5);
-    cout << team2->getIndex() << endl;
     team2->addPlayer(player6);
-    cout << team2->getIndex() << endl;
 
 }
 
@@ -79,7 +73,6 @@ void Game::Start_game(Team* enteredTeam) {
     
     // add players individually to team1
     team1->addPlayer(enteredTeam->getPlayer(0));
-   
 
     team1->addPlayer(enteredTeam->getPlayer(1));
 
@@ -120,6 +113,8 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
                 action = true;
         }
             else {
+                setScoreTeam2(getScoreTeam2()+1);
+                cout << team1->getPlayer(3)->get_name() << " hit the net!" << endl;
                 action = false;
                 continue; // Go back to the beginning of the outer loop for the next point
             }

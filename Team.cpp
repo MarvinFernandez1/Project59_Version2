@@ -31,7 +31,6 @@ bool Team::addPlayer(Player* playerInput)   {
         squad[getIndex()] = playerInput;
         setIndex(getIndex() + 1);
         cout << playerInput->get_name() << " added to the lineup!" << endl;
-        cout << getIndex() << endl;
         return true;
     }
     cout << "Too Many Players!" << endl;
