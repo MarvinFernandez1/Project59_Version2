@@ -79,29 +79,23 @@ void Game::Start_game(Team* enteredTeam) {
     
     // add players individually to team1
     team1->addPlayer(enteredTeam->getPlayer(0));
-    cout << team1->getPlayer(0)->get_name() << endl;
+   
 
     team1->addPlayer(enteredTeam->getPlayer(1));
-    cout << team1->getPlayer(1)->get_name() << endl;
 
     team1->addPlayer(enteredTeam->getPlayer(2));
-    cout << team1->getPlayer(2)->get_name() << endl;
 
     team1->addPlayer(enteredTeam->getPlayer(3));
-    cout << team1->getPlayer(3)->get_name() << endl;
 
     team1->addPlayer(enteredTeam->getPlayer(4));
-    cout << team1->getPlayer(4)->get_name() << endl;
+    
+    team1->addPlayer(enteredTeam->getPlayer(5));  // DOES
 
-    team1->addPlayer(enteredTeam->getPlayer(5));
-    cout << team1->getPlayer(5)->get_name() << endl;
-
-
+    
     //list starting Lineup
     cout << "Starting Lineup: " << endl;
     cout << team1->getPlayer(0)->get_name() << "    "  << team1->getPlayer(1)->get_name() << "    " << team1->getPlayer(2)->get_name() << endl;
     cout << team1->getPlayer(5)->get_name() << "    "  << team1->getPlayer(4)->get_name() << "    " << team1->getPlayer(3)->get_name() << endl;
-    
 }
 
 

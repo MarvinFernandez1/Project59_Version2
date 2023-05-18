@@ -27,17 +27,19 @@ void Team::setIndex(int indexInput)   {
 }
 
 bool Team::addPlayer(Player* playerInput)   {
-    if(getIndex() <= numPlayers)  {
+    if(getIndex() < numPlayers+1)  {
         squad[getIndex()] = playerInput;
         setIndex(getIndex() + 1);
         cout << playerInput->get_name() << " added to the lineup!" << endl;
+        cout << getIndex() << endl;
         return true;
     }
+    cout << "Too Many Players!" << endl;
     return false;
 }
 
 Player* Team::getPlayer(int index)  {
-    if (index >= 0 && index < numPlayers) {
+    if (index >= 0 && index <= numPlayers) {
         return squad[index];
     }
     return nullptr;

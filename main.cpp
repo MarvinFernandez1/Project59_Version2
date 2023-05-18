@@ -17,7 +17,7 @@ int main() {
     Player* P3 = new Spiker("Marvin",5,"Spiker",67,23,80,75);
     Player* P4 = new Digger("Lebron",1,"Digger",21,44,23,95);
     Player* P5 = new Spiker("Wilt",2,"Spiker",89,78,40,93);
-    Player* P6 = new Spiker("Shaq",4,"Spiker",2,1,1,94);
+    Player* P6 = new Spiker("PLAYER6",4,"Spiker",30,30,30,83);
 
 
     // create team
@@ -30,6 +30,7 @@ int main() {
     t1.addPlayer(P4);
     t1.addPlayer(P5);
     t1.addPlayer(P6);
+    t1.addPlayer(P2);
     
 
     // prepare game
