@@ -12,10 +12,11 @@ class Game {
     bool gameOn;
     string oppositionDifficulty;
     int winPoints;
-    Team* team1;
-    Team* team2;
+    
     
     public:
+    Team* team1;
+    Team* team2;
     Game();
     Game(int winPoints, string oppositionDifficulty);
     ~Game();

@@ -7,10 +7,10 @@ using namespace std;
 Spiker spiker;
 
 Spiker::Spiker () {
-    this->serveAbility = serveAbility;
-    this->digAbility = digAbility;
-    this->setAbility = setAbility;
-    this->spikeAbility = spikeAbility;
+    this->serveAbility = 0;
+    this->digAbility = 0;
+    this->setAbility = 0;
+    this->spikeAbility = 0;
 }
 
 Spiker::Spiker(string name, int startPosition, string role, int serveAbility, int digAbility, int setAbility, int spikeAbility) {
@@ -47,7 +47,7 @@ bool Spiker::attemptDig () {
         cout << spiker.get_name() << " did not dig successfully!" << endl;
         return false;
     }
-
+    return false;
 }
 //
 bool Spiker::attemptSet () {
@@ -74,7 +74,7 @@ bool Spiker::attemptSet () {
         cout << spiker.get_name() << " did not set successfully!" << endl;
         return false;
     }
-
+    return false;
 }
 bool Spiker::attemptSpike () {
 // create array of probability
@@ -101,5 +101,5 @@ bool Spiker::attemptSpike () {
         cout << spiker.get_name() << " did not spike successfully!" << endl;
         return false;
     }
-
+    return false;
 }

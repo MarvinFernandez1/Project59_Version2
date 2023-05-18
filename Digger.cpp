@@ -7,10 +7,10 @@ using namespace std;
 Digger digger;
 
 Digger::Digger () {
-    this->serveAbility = serveAbility;
-    this->digAbility = digAbility;
-    this->setAbility = setAbility;
-    this->spikeAbility = spikeAbility;
+    this->serveAbility = 0;
+    this->digAbility = 0;
+    this->setAbility = 0;
+    this->spikeAbility = 0;
 }
 
 Digger::Digger(string name, int startPosition, string role, int serveAbility, int digAbility, int setAbility, int spikeAbility) {
@@ -51,6 +51,8 @@ bool Digger::attemptDig() {
         return false;
     }
 
+    return false;
+
 }
 bool Digger::attemptSet () {
 // create array of probability
@@ -76,7 +78,7 @@ bool Digger::attemptSet () {
         cout << digger.get_name() << " did not set successfully." << endl;
         return false;
     }
-
+    return false;
 }
 bool Digger::attemptSpike () {
 // create array of probability
@@ -102,5 +104,5 @@ bool Digger::attemptSpike () {
         cout << digger.get_name() << " did not spike successfully." << endl;
         return false;
     }
-
+    return false;
 }

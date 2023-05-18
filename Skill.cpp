@@ -59,6 +59,7 @@ bool Skill::attemptServe (int serveAbility) {
         return false;
     }
 
+    return false;
 }
 bool Skill::attemptDig (int digAbility) {
     return 0;

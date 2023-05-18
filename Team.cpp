@@ -22,10 +22,14 @@ int Team::getIndex()    {
     return index;
 }
 
+void Team::setIndex(int indexInput)   {
+    this->index = indexInput;
+}
+
 bool Team::addPlayer(Player* playerInput)   {
-    if(index <= numPlayers)  {
-        squad[index] = playerInput;
-        index++;
+    if(getIndex() <= numPlayers)  {
+        squad[getIndex()] = playerInput;
+        setIndex(getIndex() + 1);
         cout << playerInput->get_name() << " added to the lineup!" << endl;
         return true;
     }
@@ -55,9 +59,6 @@ void Team::teamStats()  {
 
 // Team destructor
 Team::~Team() {
-    for (int i = 0; i < numPlayers; i++) {
-        delete squad[i];
-    }
     delete[] squad;
 }
 

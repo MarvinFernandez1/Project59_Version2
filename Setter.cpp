@@ -7,10 +7,10 @@ using namespace std;
 Setter setter;
 
 Setter::Setter () {
-    this->serveAbility = serveAbility;
-    this->digAbility = digAbility;
-    this->setAbility = setAbility;
-    this->spikeAbility = spikeAbility;
+    this->serveAbility = 0;
+    this->digAbility = 0;
+    this->setAbility = 0;
+    this->spikeAbility = 0;
 }
 
 Setter::Setter(string name, int startPosition, string role, int serveAbility, int digAbility, int setAbility, int spikeAbility) {
@@ -48,7 +48,7 @@ bool Setter::attemptDig () {
         cout << setter.get_name() << " did not dig successfully." << endl;
         return false;
     }
-
+    return false;
 }
 //
 bool Setter::attemptSet () {
@@ -76,7 +76,7 @@ bool Setter::attemptSet () {
         cout << setter.get_name() << " did not set successfully." << endl;
         return false;
     }
-
+    return false;
 }
 bool Setter::attemptSpike () {
 // create array of probability
@@ -102,5 +102,5 @@ bool Setter::attemptSpike () {
         cout << setter.get_name() << " did not spike successfully." << endl;
         return false;
     }
-
+    return false;
 }

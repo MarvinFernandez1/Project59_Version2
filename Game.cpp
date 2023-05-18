@@ -1,6 +1,7 @@
 #include <iostream> 
 #include <string>
 #include "Game.h"
+#include "Team.h"
 #include "Setter.h"
 #include "Spiker.h"
 #include "Digger.h"
@@ -70,28 +71,37 @@ void Game::createOpposingTeam()  {
     team2->addPlayer(player6);
     cout << team2->getIndex() << endl;
 
-    // delete created players
-    delete player1;
-    delete player2;
-    delete player3;
-    delete player4;
-    delete player5;
-    delete player6;
 }
 
 
 // start game - initialise two teams in seperate arrays
 void Game::Start_game(Team* enteredTeam) {
-    delete team1;
-    team1 = enteredTeam; 
-    cout << team1->getPlayer(3)->get_name() << endl;
     
-   /*
-    // list starting Lineup
+    // add players individually to team1
+    team1->addPlayer(enteredTeam->getPlayer(0));
+    cout << team1->getPlayer(0)->get_name() << endl;
+
+    team1->addPlayer(enteredTeam->getPlayer(1));
+    cout << team1->getPlayer(1)->get_name() << endl;
+
+    team1->addPlayer(enteredTeam->getPlayer(2));
+    cout << team1->getPlayer(2)->get_name() << endl;
+
+    team1->addPlayer(enteredTeam->getPlayer(3));
+    cout << team1->getPlayer(3)->get_name() << endl;
+
+    team1->addPlayer(enteredTeam->getPlayer(4));
+    cout << team1->getPlayer(4)->get_name() << endl;
+
+    team1->addPlayer(enteredTeam->getPlayer(5));
+    cout << team1->getPlayer(5)->get_name() << endl;
+
+
+    //list starting Lineup
     cout << "Starting Lineup: " << endl;
     cout << team1->getPlayer(0)->get_name() << "    "  << team1->getPlayer(1)->get_name() << "    " << team1->getPlayer(2)->get_name() << endl;
     cout << team1->getPlayer(5)->get_name() << "    "  << team1->getPlayer(4)->get_name() << "    " << team1->getPlayer(3)->get_name() << endl;
-    */
+    
 }
 
 

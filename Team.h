@@ -9,8 +9,8 @@ class Team {
     protected: // added to branch 2 to test
     Player** squad;
     int numPlayers;
-    int index;
     string name;
+    int index;
 
     public:
     Team();
@@ -21,5 +21,6 @@ class Team {
     ~Team();
 
     int getIndex();
+    void setIndex(int indexInput);
 };
 #endif
