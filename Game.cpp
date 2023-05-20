@@ -50,12 +50,12 @@ int Game::getScoreTeam2()   {return scoreTeam2;}
 // create opposing team
 void Game::createOpposingTeam()  {
     // Create preset players with fixed skill levels
-    Player* player1 = new Setter("Opposing Player 1", 0, "Setter", 90, 90, 90, 90);
-    Player* player2 = new Digger("Opposing Player 2", 1, "Digger", 90, 90, 90, 90);
-    Player* player3 = new Spiker("Opposing Player 3", 2, "Spiker", 90, 90, 90, 90);
-    Player* player4 = new Digger("Opposing Player 4", 3, "Digger", 90, 90, 90, 90);
-    Player* player5 = new Digger("Opposing Player 5", 4, "Digger", 90, 90, 90, 90);
-    Player* player6 = new Spiker("Opposing Player 6", 5, "Spiker", 90, 90, 90, 90);
+    Player* player1 = new Setter("Opposing Player 1", 0, "Setter", 93, 93, 93, 93);
+    Player* player2 = new Digger("Opposing Player 2", 1, "Digger", 93, 93, 93, 93);
+    Player* player3 = new Spiker("Opposing Player 3", 2, "Spiker", 93, 93, 93, 93);
+    Player* player4 = new Digger("Opposing Player 4", 3, "Digger", 93, 93, 93, 93);
+    Player* player5 = new Digger("Opposing Player 5", 4, "Digger", 93, 93, 93, 93);
+    Player* player6 = new Spiker("Opposing Player 6", 5, "Spiker", 93, 93, 93, 93);
 
     // Add the players to the opposing team
     team2->addPlayer(player1);
@@ -82,9 +82,8 @@ void Game::Start_game(Team* enteredTeam) {
 
     team1->addPlayer(enteredTeam->getPlayer(4));
     
-    team1->addPlayer(enteredTeam->getPlayer(5));  // DOES
+    team1->addPlayer(enteredTeam->getPlayer(5));
 
-    
     //list starting Lineup
     cout << "Starting Lineup: " << endl;
     cout << team1->getPlayer(0)->get_name() << "    "  << team1->getPlayer(1)->get_name() << "    " << team1->getPlayer(2)->get_name() << endl;
@@ -243,7 +242,7 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
             // if setter in position 3, 4, 5: (any frontcourt player () can spike first)
             switch (positionSetter2)    {
                 case 3: case 4: case 5:     // player 3,4 or 5 digs
-                randomPosition = (rand() % 3) + 3;  // need num between 0 and 2
+                randomPosition = (rand() % 3);  // need num between 0 and 2
                 if(team2->getPlayer(randomPosition)->attemptSpike()) {
                     action = true;
                 }
@@ -371,9 +370,9 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
             }
 
             // if setter in position 3, 4, 5: (any frontcourt player () can spike first)
-            switch (positionSetter2)    {
+            switch (positionSetter1)    {
                 case 3: case 4: case 5:     // player 3,4 or 5 digs
-                randomPosition = (rand() % 3) + 3;  // need num between 0 and 2
+                randomPosition = (rand() % 3);  // need num between 0 and 2
                 if(team1->getPlayer(randomPosition)->attemptSpike()) {
                     action = true;
                 }

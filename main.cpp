@@ -12,12 +12,12 @@ using namespace std;
 
 int main() {
 // Enter Players to Play (name, starting position, role on team, serveSkill, digSkill, setSkill, spikeSkill)
-    Player* P1 = new Digger("Michael",0, "Digger", 90, 90, 90 ,90);
-    Player* P2 = new Setter("Kien",3,"Setter",90,90,90,90);
-    Player* P3 = new Spiker("Jokic",5,"Spiker",90,90,90,90);
-    Player* P4 = new Digger("Lebron",1,"Digger",90,90,90,90);
-    Player* P5 = new Spiker("Wilt",2,"Spiker",90,90,90,90);
-    Player* P6 = new Spiker("Marvin",4,"Spiker",90,90,90,90);
+    Player* P1 = new Digger("Michael",0, "Digger", 93, 93, 93 ,93);
+    Player* P2 = new Setter("Kien",3,"Setter",93,93,93,93);
+    Player* P3 = new Spiker("Jokic",5,"Spiker",93,93,93,93);
+    Player* P4 = new Digger("Lebron",1,"Digger",93,93,93,93);
+    Player* P5 = new Spiker("Wilt",2,"Spiker",93,93,93,93);
+    Player* P6 = new Spiker("Marvin",4,"Spiker",93,93,93,93);
 
 
     // create team
@@ -29,7 +29,7 @@ int main() {
     t1.addPlayer(P3);
     t1.addPlayer(P4);
     t1.addPlayer(P5);
-    t1.addPlayer(P6);
+    t1.addPlayer(P6);   // NEED TO CHECK THAT 6 PLAYERS ARE ON A TEAM -- FOR 0-5 check for nullptr, if so, unable to run simulation
     t1.addPlayer(P2);   // shows that only 6 players can be added to a team
     
 
