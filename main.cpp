@@ -34,7 +34,7 @@ int main() {
     
 
     // prepare game
-    Game round1(5,"hard");
+    Game round1(10,"hard");
     round1.createOpposingTeam();  
     round1.Start_game(userTeam);
 
