@@ -9,6 +9,7 @@ class Setter : public Skill {
     public:
     Setter ();
     Setter(string name, int startPosition, string role, int serveAbility, int digAbility, int setAbility, int spikeAbility);
+    bool attemptServe();
     bool attemptDig ();
     bool attemptSet ();
     bool attemptSpike ();

@@ -11,13 +11,13 @@
 using namespace std;
 
 int main() {
-//Player(name, starting position, role on team)
-    Player* P1 = new Digger("Michael",0, "Digger", 60, 50, 20, 80);
-    Player* P2 = new Setter("Kien",3,"Setter",83,76,88,72);
-    Player* P3 = new Spiker("Jokic",5,"Spiker",67,23,80,75);
-    Player* P4 = new Digger("Lebron",1,"Digger",0,0,23,95);
-    Player* P5 = new Spiker("Wilt",2,"Spiker",89,78,40,93);
-    Player* P6 = new Spiker("Marvin",4,"Spiker",30,30,30,83);
+// Enter Players to Play (name, starting position, role on team, serveSkill, digSkill, setSkill, spikeSkill)
+    Player* P1 = new Digger("Michael",0, "Digger", 90, 90, 90 ,90);
+    Player* P2 = new Setter("Kien",3,"Setter",90,90,90,90);
+    Player* P3 = new Spiker("Jokic",5,"Spiker",90,90,90,90);
+    Player* P4 = new Digger("Lebron",1,"Digger",90,90,90,90);
+    Player* P5 = new Spiker("Wilt",2,"Spiker",90,90,90,90);
+    Player* P6 = new Spiker("Marvin",4,"Spiker",90,90,90,90);
 
 
     // create team
@@ -30,11 +30,11 @@ int main() {
     t1.addPlayer(P4);
     t1.addPlayer(P5);
     t1.addPlayer(P6);
-    t1.addPlayer(P2);
+    t1.addPlayer(P2);   // shows that only 6 players can be added to a team
     
 
     // prepare game
-    Game round1(1,"easy");
+    Game round1(5,"easy");
     round1.createOpposingTeam();  
     round1.Start_game(userTeam); //WHY DOES THIS LINE MAKE THE TERMINAL PAUSE FOR 2 SECONDS BEFORE EXITING? - memory could not be read (SHAQ CANNOT BE READ) - FIXED!
 
@@ -49,9 +49,6 @@ int main() {
     delete P4;
     delete P5;
     delete P6;
-    
-    
-    cout << "Let the battle begin!" << endl;
 
 
     return 0;

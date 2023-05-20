@@ -3,9 +3,6 @@
 #include "Setter.h"
 using namespace std;
 
-//Create object setter to use with functions
-Setter setter;
-
 Setter::Setter () {
     this->serveAbility = 0;
     this->digAbility = 0;
@@ -22,6 +19,36 @@ Setter::Setter(string name, int startPosition, string role, int serveAbility, in
     this->setAbility = setAbility;
     this->spikeAbility = spikeAbility;
 }
+
+bool Setter::attemptServe () {
+    
+    // create array of probability
+    int serveArray[100] = {0};
+    int serveSkill = serveAbility;
+    for(int i = 0; i < serveSkill - 1; i++) {
+        serveArray[i] = 1;
+    }
+
+    // generate a rand num between 0-99
+    int randomNum = rand() % 100;
+
+    // if serve successful
+    if(serveArray[randomNum] == 1) {
+        set_attemptServes(get_attemptServes()+1);
+        set_successfulServes(get_attemptServes()+1);
+        cout << this->name << " served successfully!" << endl;
+        return true;
+    }
+    //if serve not successful
+    if(serveArray[randomNum] == 0)  {
+        set_attemptServes(get_attemptServes()+1);
+        cout << this->name << " did not serve successfully!" << endl;
+        return false;
+    }
+
+    return false;
+}
+
 
 bool Setter::attemptDig () {
         

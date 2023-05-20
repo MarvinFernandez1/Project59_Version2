@@ -3,8 +3,6 @@
 #include "Digger.h"
 using namespace std;
 
-//Create object digger to use with functions
-Digger digger;
 
 Digger::Digger () {
     this->serveAbility = 0;
@@ -23,6 +21,34 @@ Digger::Digger(string name, int startPosition, string role, int serveAbility, in
     this->spikeAbility = spikeAbility;
 }
 
+bool Digger::attemptServe () {
+    
+    // create array of probability
+    int serveArray[100] = {0};
+    int serveSkill = serveAbility;
+    for(int i = 0; i < serveSkill - 1; i++) {
+        serveArray[i] = 1;
+    }
+
+    // generate a rand num between 0-99
+    int randomNum = rand() % 100;
+
+    // if serve successful
+    if(serveArray[randomNum] == 1) {
+        set_attemptServes(get_attemptServes()+1);
+        set_successfulServes(get_attemptServes()+1);
+        cout << this->name << " served successfully!" << endl;
+        return true;
+    }
+    //if serve not successful
+    if(serveArray[randomNum] == 0)  {
+        set_attemptServes(get_attemptServes()+1);
+        cout << this->name << " did not serve successfully!" << endl;
+        return false;
+    }
+
+    return false;
+}
 
 bool Digger::attemptDig() {
         
@@ -95,13 +121,13 @@ bool Digger::attemptSpike () {
     if(spikeArray[randomNum] == 1) {
         set_attemptSpikes(get_attemptSpikes()+1);
         set_successfulSpikes(get_attemptSpikes()+1);
-        cout << digger.get_name() << " spike successfully!" << endl;
+        cout << this->name << " spike successfully!" << endl;
         return true;
     }
     // if spike not successful
     if(spikeArray[randomNum] == 0)  {
         set_attemptSpikes(get_attemptSpikes()+1);
-        cout << digger.get_name() << " did not spike successfully." << endl;
+        cout << this->name << " did not spike successfully." << endl;
         return false;
     }
     return false;

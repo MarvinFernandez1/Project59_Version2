@@ -63,6 +63,10 @@ Team::~Team() {
     delete[] squad;
 }
 
+void Team::setPlayer(int index, Player* playerSelected)   {
+    squad[index] = playerSelected;
+}
+
 // \\ bool Clinic::add_cage(Cage new_cage){
 //  \\    Clinic clinicCages;
 //   \\   for (int k=0;k<clinicSize;k++){

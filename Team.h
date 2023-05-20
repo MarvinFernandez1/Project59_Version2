@@ -22,5 +22,6 @@ class Team {
 
     int getIndex();
     void setIndex(int indexInput);
+    void setPlayer(int index, Player* playerSelected);
 };
 #endif

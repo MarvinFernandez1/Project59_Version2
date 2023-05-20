@@ -25,7 +25,7 @@ class Skill : public Player {
     void set_digAbility (int digAbility);
     void set_setAbility (int setAbility);
     void set_spikeAbility (int spikeAbility);
-    bool attemptServe (int serveAbility);
+    virtual bool attemptServe (int serveAbility);
     virtual bool attemptDig (int digAbility);
     virtual bool attemptSet (int setAbility);
     virtual bool attemptSpike (int spikeAbility);

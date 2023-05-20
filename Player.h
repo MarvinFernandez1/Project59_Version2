@@ -62,6 +62,10 @@ class Player {
         return false;
     }
 
+    virtual bool attemptServe()   {
+        return false;
+    }
+
     virtual int get_serveAbility () {
         return false;
     }

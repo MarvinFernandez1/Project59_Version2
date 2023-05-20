@@ -9,6 +9,7 @@ class Spiker : public Skill {
     public:
     Spiker ();
     Spiker(string name, int startPosition, string role, int serveAbility, int digAbility, int setAbility, int spikeAbility);
+    bool attemptServe();
     bool attemptDig ();
     bool attemptSet ();
     bool attemptSpike ();

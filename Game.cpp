@@ -50,12 +50,12 @@ int Game::getScoreTeam2()   {return scoreTeam2;}
 // create opposing team
 void Game::createOpposingTeam()  {
     // Create preset players with fixed skill levels
-    Player* player1 = new Setter("Opposing Player 1", 0, "Setter", 80, 70, 60, 50);
-    Player* player2 = new Digger("Opposing Player 2", 1, "Digger", 70, 60, 80, 50);
-    Player* player3 = new Spiker("Opposing Player 3", 2, "Spiker", 60, 50, 70, 80);
-    Player* player4 = new Digger("Opposing Player 4", 3, "Digger", 70, 80, 60, 50);
-    Player* player5 = new Digger("Opposing Player 5", 4, "Digger", 60, 70, 80, 50);
-    Player* player6 = new Spiker("Opposing Player 6", 5, "Spiker", 50, 60, 70, 80);
+    Player* player1 = new Setter("Opposing Player 1", 0, "Setter", 90, 90, 90, 90);
+    Player* player2 = new Digger("Opposing Player 2", 1, "Digger", 90, 90, 90, 90);
+    Player* player3 = new Spiker("Opposing Player 3", 2, "Spiker", 90, 90, 90, 90);
+    Player* player4 = new Digger("Opposing Player 4", 3, "Digger", 90, 90, 90, 90);
+    Player* player5 = new Digger("Opposing Player 5", 4, "Digger", 90, 90, 90, 90);
+    Player* player6 = new Spiker("Opposing Player 6", 5, "Spiker", 90, 90, 90, 90);
 
     // Add the players to the opposing team
     team2->addPlayer(player1);
@@ -109,7 +109,7 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
         
         // run through actions
         // serve team 1
-        if (team1->getPlayer(3)->attemptDig()) {    // change to SERVE
+        if (team1->getPlayer(3)->attemptServe()) {    // change to SERVE
                 action = true;
         }
             else {
@@ -119,43 +119,55 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
                 continue; // Go back to the beginning of the outer loop for the next point
             }
 
+       
+        // RALLY
+        bool rallyAction = true;
+        
+        while(rallyAction == true)  {
         // dig team 2:
+        int randomPosition = 0;
             // determine where setter is
-            int positionSetter = 0;
+            int positionSetter2 = 0;
             for(int i=0; i < 5; i++)    {
                 if(team2->getPlayer(i)->get_role() == "Setter") {
-                    positionSetter = i;
+                    positionSetter2 = i;
                     break;
                 }
             }
             
             // if setter in position 3, 4, 5: (another backcourt player (3, 4, 5) must dig first)
-            switch (positionSetter) {
-                case 3: // player 4 digs
-                    if (team2->getPlayer(4)->attemptDig()) {
+            switch (positionSetter2) {
+                case 3: // player 4 or 5 digs 
+                    if (team2->getPlayer((rand() % 2) + 4)->attemptDig()) {
                         action = true;
                     }
                     else {
+                        setScoreTeam1(getScoreTeam1()+1);
+                        rallyAction = false;
                         action = false;
                         continue;
                     }
                     break;
 
-                case 4: // player 5 digs
-                    if (team2->getPlayer(3)->attemptDig()) {
+                case 4: // player 3 or 5 digs
+                    if (team2->getPlayer(((rand() % 2)*2) + 3)->attemptDig()) {
                         action = true;
                     }
                     else {
+                        setScoreTeam1(getScoreTeam1()+1);
+                        rallyAction = false;
                         action = false;
                         continue;
                     }
                     break;
 
-                case 5: // player 4 digs
-                    if (team2->getPlayer(4)->attemptDig()) {
+                case 5: // player 3 or 4 digs
+                    if (team2->getPlayer((rand() % 2) + 3)->attemptDig()) {
                         action = true;
                     }
                     else {
+                        setScoreTeam1(getScoreTeam1()+1);
+                        rallyAction = false;
                         action = false;
                         continue;
                     }
@@ -163,56 +175,65 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
             }            
 
             // if setter in position 0,1,2 (generate a number between 3,4,5 to decide which backcourt player digs)
-            int randomPosition = 0;
-            switch (positionSetter)   {
+            switch (positionSetter2)   {
                 case 0: case 1: case 2:     // player 3,4 or 5 digs
                 randomPosition = (rand() % 3) + 3;  // need num between 3 and 5
                 if(team2->getPlayer(randomPosition)->attemptDig()) {
                     action = true;
                 }
                 else {
+                setScoreTeam1(getScoreTeam1()+1);
+                rallyAction = false;
                 action = false;
                 continue;}
                 break;
             }
 
         // set team 2
-        if (team2->getPlayer(positionSetter)->attemptSet()) {
+        if (team2->getPlayer(positionSetter2)->attemptSet()) {
             action = true;
         }
         else {
+            setScoreTeam1(getScoreTeam1()+1);
+            rallyAction = false;
             action = false;
             continue; // Go back to the beginning of the outer loop for the next point
         }
 
         // spike team 2
             // if setter in position 0, 1, 2: (another frontcourt player () must spike first)
-            switch (positionSetter) {
-                case 0: // player 1 spikes
-                    if (team2->getPlayer(1)->attemptSpike()) {
+            switch (positionSetter2) {
+                case 0: // player 1 or 2 spikes
+                    if (team2->getPlayer((rand() % 2) + 1)->attemptSpike()) {
                         action = true;
                     }
                     else {
+                        setScoreTeam1(getScoreTeam1()+1);
+                        rallyAction = false;
                         action = false;
                         continue;
                     }
                     break;
 
-                case 1: // player 0 spikes
-                    if (team2->getPlayer(0)->attemptSpike()) {
+                case 1: // player 0 or 2 spikes
+                    if (team2->getPlayer(((rand() % 2)*2))->attemptSpike()) {
                         action = true;
                     }
                     else {
+                        setScoreTeam1(getScoreTeam1()+1);
+                        rallyAction = false;
                         action = false;
                         continue;
                     }
                     break;
 
-                case 2: // player 1 spikes
-                    if (team2->getPlayer(1)->attemptSpike()) {
+                case 2: // player 0 or 1 spikes
+                    if (team2->getPlayer(rand() % 2)->attemptSpike()) {
                         action = true;
                     }
                     else {
+                        setScoreTeam1(getScoreTeam1()+1);
+                        rallyAction = false;
                         action = false;
                         continue;
                     }
@@ -220,30 +241,174 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
             }
 
             // if setter in position 3, 4, 5: (any frontcourt player () can spike first)
-            switch (positionSetter)    {
+            switch (positionSetter2)    {
                 case 3: case 4: case 5:     // player 3,4 or 5 digs
                 randomPosition = (rand() % 3) + 3;  // need num between 0 and 2
                 if(team2->getPlayer(randomPosition)->attemptSpike()) {
                     action = true;
                 }
                 else {
+                setScoreTeam1(getScoreTeam1()+1);
+                rallyAction = false;
                 action = false;
                 continue;}
                 break;
             }
 
-        cout << "End of Point" << endl;
+        // dig team 1
+        // determine setter position of team 1
+        int positionSetter1 = 0;
+            for(int i=0; i < 5; i++)    {
+                if(team1->getPlayer(i)->get_role() == "Setter") {
+                    positionSetter1 = i;
+                    break;
+                }
+            }
+
+        // if setter in position 3, 4, 5: (another backcourt player (3, 4, 5) must dig first)
+            switch (positionSetter1) {
+                case 3: // player 4 or 5 digs
+                    if (team1->getPlayer((rand() % 2) + 4)->attemptDig()) {
+                        action = true;
+                    }
+                    else {
+                        setScoreTeam2(getScoreTeam1()+1);
+                        rallyAction = false;
+                        action = false;
+                        continue;
+                    }
+                    break;
+
+                case 4: // player 3 or 5 digs
+                    if (team1->getPlayer(((rand() % 2)*2) + 3)->attemptDig()) {
+                        action = true;
+                    }
+                    else {
+                        setScoreTeam2(getScoreTeam1()+1);
+                        rallyAction = false;
+                        action = false;
+                        continue;
+                    }
+                    break;
+
+                case 5: // player 3 or 4 digs
+                    if (team1->getPlayer((rand() % 2) + 3)->attemptDig()) {
+                        action = true;
+                    }
+                    else {
+                        setScoreTeam2(getScoreTeam1()+1);
+                        rallyAction = false;
+                        action = false;
+                        continue;
+                    }
+                    break;
+            }  
+
+        // if setter in position 0,1,2 (generate a number between 3,4,5 to decide which backcourt player digs)
+            switch (positionSetter1)   {
+                case 0: case 1: case 2:     // player 3,4 or 5 digs
+                randomPosition = (rand() % 3) + 3;  // need num between 3 and 5
+                if(team1->getPlayer(randomPosition)->attemptDig()) {
+                    action = true;
+                }
+                else {
+                setScoreTeam2(getScoreTeam1()+1);
+                rallyAction = false;
+                action = false;
+                continue;}
+                break;
+            }
+
+        // set team 1
+        if (team1->getPlayer(positionSetter1)->attemptSet()) {
+            action = true;
+        }
+        else {
+            setScoreTeam2(getScoreTeam2()+1);
+            rallyAction = false;
+            action = false;
+            continue; // Go back to the beginning of the outer loop for the next point
+        }
+
+        // spike team 1
+            // if setter in position 0, 1, 2: (another frontcourt player () must spike first)
+            switch (positionSetter1) {
+                case 0: // player 1 or 2 spikes
+                    if (team1->getPlayer((rand() % 2) + 1)->attemptSpike()) {
+                        action = true;
+                    }
+                    else {
+                        setScoreTeam2(getScoreTeam2()+1);
+                        rallyAction = false;
+                        action = false;
+                        continue;
+                    }
+                    break;
+
+                case 1: // player 0 OR 2 spikes
+                    if (team1->getPlayer(((rand() % 2)*2))->attemptSpike()) {
+                        action = true;
+                    }
+                    else {
+                        setScoreTeam2(getScoreTeam2()+1);
+                        rallyAction = false;
+                        action = false;
+                        continue;
+                    }
+                    break;
+
+                case 2: // player 0 or 1  spikes
+                    if (team1->getPlayer((rand() % 2))->attemptSpike()) {
+                        action = true;
+                    }
+                    else {
+                        setScoreTeam2(getScoreTeam2()+1);
+                        rallyAction = false;
+                        action = false;
+                        continue;
+                    }
+                    break;
+            }
+
+            // if setter in position 3, 4, 5: (any frontcourt player () can spike first)
+            switch (positionSetter2)    {
+                case 3: case 4: case 5:     // player 3,4 or 5 digs
+                randomPosition = (rand() % 3) + 3;  // need num between 0 and 2
+                if(team1->getPlayer(randomPosition)->attemptSpike()) {
+                    action = true;
+                }
+                else {
+                setScoreTeam2(getScoreTeam2()+1);
+                rallyAction = false;
+                action = false;
+                continue;}
+                break;
+            }
+
+        }
+
     }            
-        // still need to IMPLEMENT THE FOLLOWING
-        // AFTER EVERY ACTION FAIL - INCREMENT THE SCORE OF OPPOSING TEAM:
-        // rotate after point finishes
-
-        // change team that is serving
-
+        
         // print score
+        cout << "Score:" << getScoreTeam1() << ":" << getScoreTeam2() << endl;
 
-        return;
+        // ROTATE 
+        Player* temp = team1->getPlayer(0);  // Store the first element in a temporary variable
+        
+        for (int i = 0; i < 5; i++) {
+        team1->setPlayer(i, team1->getPlayer(i+1));
+        }
+
+        team1->setPlayer(5,temp); // Place the temporary player at the end of the array
+
+        cout << "Rotating Lineup: " << endl;
+        cout << team1->getPlayer(0)->get_name() << "    "  << team1->getPlayer(1)->get_name() << "    " << team1->getPlayer(2)->get_name() << endl;
+        cout << team1->getPlayer(5)->get_name() << "    "  << team1->getPlayer(4)->get_name() << "    " << team1->getPlayer(3)->get_name() << endl;
+
     }
+
+    cout << "End of Game!" << endl;
+    return;
 
 }
 
