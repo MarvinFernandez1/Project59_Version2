@@ -12,10 +12,10 @@ using namespace std;
 
 int main() {
 // Enter Players to Play (name, starting position, role on team, serveSkill, digSkill, setSkill, spikeSkill)
-    Player* P1 = new Digger("Michael",0, "Digger", 93, 93, 93 ,93);
-    Player* P2 = new Setter("Kien",3,"Setter",93,93,93,93);
+    Player* P1 = new Digger("Michael",0, "Digger", 92, 93, 93 ,20);
+    Player* P2 = new Setter("Kien",3,"Setter",93,93,60,93);
     Player* P3 = new Spiker("Jokic",5,"Spiker",93,93,93,93);
-    Player* P4 = new Digger("Lebron",1,"Digger",93,93,93,93);
+    Player* P4 = new Digger("Lebron",1,"Digger",93,62,93,93);
     Player* P5 = new Spiker("Wilt",2,"Spiker",93,93,93,93);
     Player* P6 = new Spiker("Marvin",4,"Spiker",93,93,93,93);
 
@@ -34,12 +34,13 @@ int main() {
     
 
     // prepare game
-    Game round1(5,"easy");
+    Game round1(5,"hard");
     round1.createOpposingTeam();  
-    round1.Start_game(userTeam); //WHY DOES THIS LINE MAKE THE TERMINAL PAUSE FOR 2 SECONDS BEFORE EXITING? - memory could not be read (SHAQ CANNOT BE READ) - FIXED!
+    round1.Start_game(userTeam);
 
     // simulate game
     round1.play();
+
 
     
     // delete players

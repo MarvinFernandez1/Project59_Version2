@@ -52,10 +52,10 @@ void Team::teamStats()  {
         totalDig += squad[i]->get_digAbility();
         totalSpike += squad[i]->get_spikeAbility();
     }
-    cout << "Team Serve Ability: " << totalServe/6 << endl;
-    cout << "Team Dig Ability: " << totalDig/6 << endl;
-    cout << "Team Set Ability: " << totalSet/6 << endl;
-    cout << "Team Spike Ability: " << totalSpike/6 << endl;
+    cout << "Team Serve Ability: " << totalServe/5 << endl;
+    cout << "Team Dig Ability: " << totalDig/5 << endl;
+    cout << "Team Set Ability: " << totalSet/5 << endl;
+    cout << "Team Spike Ability: " << totalSpike/5 << endl;
 }
 
 // Team destructor

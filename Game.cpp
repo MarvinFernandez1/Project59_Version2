@@ -88,6 +88,10 @@ void Game::Start_game(Team* enteredTeam) {
     cout << "Starting Lineup: " << endl;
     cout << team1->getPlayer(0)->get_name() << "    "  << team1->getPlayer(1)->get_name() << "    " << team1->getPlayer(2)->get_name() << endl;
     cout << team1->getPlayer(5)->get_name() << "    "  << team1->getPlayer(4)->get_name() << "    " << team1->getPlayer(3)->get_name() << endl;
+
+    // list team stats:
+    cout << "Team Stats: " << endl;
+    team1->teamStats();
 }
 
 
@@ -107,6 +111,8 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
         Team* receivingTeam = this->team2;
         
         // run through actions
+
+
         // serve team 1
         if (team1->getPlayer(3)->attemptServe()) {    // change to SERVE
                 action = true;
@@ -123,16 +129,27 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
         bool rallyAction = true;
         
         while(rallyAction == true)  {
-        // dig team 2:
-        int randomPosition = 0;
-            // determine where setter is
-            int positionSetter2 = 0;
+        // determine setter position of team 1
+        int positionSetter1 = 0;
+            for(int i=0; i < 5; i++)    {
+                if(team1->getPlayer(i)->get_role() == "Setter") {
+                    positionSetter1 = i;
+                    break;
+                }
+            }
+
+        // determine where setter is
+        int positionSetter2 = 0;
             for(int i=0; i < 5; i++)    {
                 if(team2->getPlayer(i)->get_role() == "Setter") {
                     positionSetter2 = i;
                     break;
                 }
             }
+        
+        
+        // dig team 2:
+        int randomPosition = 0;
             
             // if setter in position 3, 4, 5: (another backcourt player (3, 4, 5) must dig first)
             switch (positionSetter2) {
@@ -255,14 +272,6 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
             }
 
         // dig team 1
-        // determine setter position of team 1
-        int positionSetter1 = 0;
-            for(int i=0; i < 5; i++)    {
-                if(team1->getPlayer(i)->get_role() == "Setter") {
-                    positionSetter1 = i;
-                    break;
-                }
-            }
 
         // if setter in position 3, 4, 5: (another backcourt player (3, 4, 5) must dig first)
             switch (positionSetter1) {
@@ -407,6 +416,7 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
     }
 
     cout << "End of Game!" << endl;
+
     return;
 
 }
