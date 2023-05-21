@@ -52,8 +52,8 @@ void Game::createOpposingTeam()  {
     // Create preset players with fixed skill levels
     Player* player1 = new Setter("Opposing Player 1", 0, "Setter", 93, 93, 93, 93);
     Player* player2 = new Digger("Opposing Player 2", 1, "Digger", 93, 93, 93, 93);
-    Player* player3 = new Spiker("Opposing Player 3", 2, "Spiker", 93, 93, 93, 93);
-    Player* player4 = new Digger("Opposing Player 4", 3, "Digger", 93, 93, 93, 93);
+    Player* player3 = new Spiker("Opposing Player 3", 2, "Spiker", 93, 82, 82, 82);
+    Player* player4 = new Digger("Opposing Player 4", 3, "Digger", 82, 82, 82, 93);
     Player* player5 = new Digger("Opposing Player 5", 4, "Digger", 93, 93, 93, 93);
     Player* player6 = new Spiker("Opposing Player 6", 5, "Spiker", 93, 93, 93, 93);
 
