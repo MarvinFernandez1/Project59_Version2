@@ -36,7 +36,7 @@ int main() {
     team1.addPlayer(P7);   // shows that only 6 players can be added to a team
     
 
-    // Preparing the Game - 
+    // Preparing the Game
     Game round1(7,"easy"); // difficulties: easy, medium, hard
     round1.createOpposingTeam();  
     round1.Start_game(userTeam);
