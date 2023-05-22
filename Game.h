@@ -24,7 +24,7 @@ class Game {
     void play();
     void printScore();
     void createOpposingTeam();
-    void outputGameStats();
+    void outputGameStats(string fileCondition);
 
     void setScoreTeam1(int scoreTeam1);
     void setScoreTeam2(int scoreTeam2);

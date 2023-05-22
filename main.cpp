@@ -42,14 +42,13 @@ int main() {
     // simulate game
     round1.play();
 
-    // show game stats
-    round1.outputGameStats();
-
-    // End Message
-    cout << "Thanks for playing!" << endl;
-
     // INPUT FROM USER - Do you wish to save your team stats to a file?
-    
+    string fileCondition;
+    cout << "Do you want to save your game stats? (yes or no)" << endl;
+    cin >> fileCondition;
+
+    // show game stats - yes or no
+    round1.outputGameStats(fileCondition);
 
     // delete players
     delete P1;
@@ -59,15 +58,6 @@ int main() {
     delete P5;
     delete P6;
 
-
     return 0;
     
-    /*
-    if(player.attemptServe())   {
-    cout << player.get_name() << " wins!" << endl;
-    }
-    else(
-        cout << player.get_name() << " loses!" << endl;
-    )
-    */
 }

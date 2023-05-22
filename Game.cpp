@@ -3,6 +3,7 @@
 #include <cstdlib>  // header for srand() and rand()
 #include <ctime>    // header for time()
 #include <stdexcept>    // header for exception handling
+#include <fstream>
 #include "Game.h"
 #include "Team.h"
 #include "Setter.h"
@@ -456,8 +457,44 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
 
 }
 
-void Game::outputGameStats()    {
+void Game::outputGameStats(string fileCondition)    {
+    // WRITE TO A FILE
+    try {
+    if (fileCondition == "yes") {
+    ofstream myfile;
+    myfile.open ("gameStats.txt");
+    
+    myfile << "Writing this to a file.\n";
+
     // Digs
+    myfile << "Game Statistics:" << endl;
+    myfile << "# of successful actions - # of attempted actions " << endl;
+    
+    myfile << "Serves:" << endl;
+    for(int i = 0; i < 6; i++)  {
+        myfile << team1->getPlayer(i)->get_name() << ":" << team1->getPlayer(i)->get_successfulServes() << "-" << team1->getPlayer(i)->get_attemptServes() << endl;
+    }
+    
+    myfile << "Digs:" << endl;
+    for(int i = 0; i < 6; i++)  {
+        myfile << team1->getPlayer(i)->get_name() << ":" << team1->getPlayer(i)->get_successfulDigs() << "-" << team1->getPlayer(i)->get_attemptDigs() << endl;
+    }
+
+    myfile << "Sets:" << endl;
+    for(int i = 0; i < 6; i++)  {
+        myfile << team1->getPlayer(i)->get_name() << ":" << team1->getPlayer(i)->get_successfulSets() << "-" << team1->getPlayer(i)->get_attemptSets() << endl;
+    }
+
+    myfile << "Spikes:" << endl;
+    for(int i = 0; i < 6; i++)  {
+        myfile << team1->getPlayer(i)->get_name() << ":" << team1->getPlayer(i)->get_successfulSpikes() << "-" << team1->getPlayer(i)->get_attemptSpikes() << endl;
+    }
+
+    myfile.close();
+    
+    } 
+    
+    else if (fileCondition == "no") {
     cout << "Game Statistics:" << endl;
     cout << "# of successful actions - # of attempted actions " << endl;
     
@@ -479,5 +516,16 @@ void Game::outputGameStats()    {
     cout << "Spikes:" << endl;
     for(int i = 0; i < 6; i++)  {
         cout << team1->getPlayer(i)->get_name() << ":" << team1->getPlayer(i)->get_successfulSpikes() << "-" << team1->getPlayer(i)->get_attemptSpikes() << endl;
+        }
+    }
+     
+    else {
+        throw std::runtime_error("Invalid input for writing to file");
+    }
+    }
+    catch (const std::exception& e) {
+        std::cout << e.what() << std::endl;
+        std::exit(1);  // Terminate program
     }
 }
+
