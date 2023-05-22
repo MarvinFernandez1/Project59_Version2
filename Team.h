@@ -21,7 +21,10 @@ class Team {
     ~Team();
 
     int getIndex();
+    string getName();
+    void setName(string name);
     void setIndex(int indexInput);
     void setPlayer(int index, Player* playerSelected);
+
 };
 #endif

@@ -67,17 +67,10 @@ void Team::setPlayer(int index, Player* playerSelected)   {
     squad[index] = playerSelected;
 }
 
-// \\ bool Clinic::add_cage(Cage new_cage){
-//  \\    Clinic clinicCages;
-//   \\   for (int k=0;k<clinicSize;k++){
-//    \\    if (cages[k].name=="" && cages[k].number==0){
-//     \\        cages[k].name=new_cage.name;
-//      \\         cages[k].number=new_cage.number;
-//       \\       break;
-//      \\    }
-//     \\     else (cages[k].name!="" && cages[k].number!=0);{
-//    \\          return 0;
-//   \\       }
-//  \\   }
-// \\    return 1;
-//}
+string Team::getName()  {
+    return name;
+}
+
+void Team::setName(string name)    {
+    this->name = name;
+}
