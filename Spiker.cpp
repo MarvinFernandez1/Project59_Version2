@@ -1,24 +1,34 @@
 #include <iostream> 
 #include <string>
+#include <stdexcept>
 #include "Spiker.h"
 using namespace std;
 
 //Create object spiker to use with functions
 Spiker::Spiker () {
-    this->serveAbility = 0;
-    this->digAbility = 0;
-    this->setAbility = 0;
-    this->spikeAbility = 0;
+    cout << "ENTER SKILL LEVEL VALUES!" << endl;
 }
 
 Spiker::Spiker(string name, int startPosition, string role, int serveAbility, int digAbility, int setAbility, int spikeAbility) {
     this->name = name;
     this->startPosition = startPosition;
     this->role = role;
+    validateSkillLevel(serveAbility);
+    validateSkillLevel(digAbility);
+    validateSkillLevel(setAbility);
+    validateSkillLevel(spikeAbility);
     this->serveAbility = serveAbility;
     this->digAbility = digAbility;
     this->setAbility = setAbility;
     this->spikeAbility = spikeAbility;
+    this->attemptServes = 0;
+    this->attemptDigs = 0;
+    this->attemptSets = 0;
+    this->attemptSpikes = 0;
+    this->successfulServes = 0;
+    this->successfulDigs = 0;
+    this->successfulSets = 0;
+    this->successfulSpikes = 0;
 }
 
 bool Spiker::attemptServe () {
@@ -36,7 +46,7 @@ bool Spiker::attemptServe () {
     // if serve successful
     if(serveArray[randomNum] == 1) {
         set_attemptServes(get_attemptServes()+1);
-        set_successfulServes(get_attemptServes()+1);
+        set_successfulServes(get_successfulServes()+1);
         cout << this->name << " served successfully!" << endl;
         return true;
     }
@@ -65,7 +75,7 @@ bool Spiker::attemptDig () {
     // if dig successful
     if(digArray[randomNum] == 1) {
         set_attemptDigs(get_attemptDigs()+1);
-        set_successfulDigs(get_attemptDigs()+1);
+        set_successfulDigs(get_successfulDigs()+1);
         cout << this->name << " digged successfully!" << endl;
         return true;
     }
@@ -92,7 +102,7 @@ bool Spiker::attemptSet () {
     // if set successful
     if(setArray[randomNum] == 1) {
         set_attemptSets(get_attemptSets()+1);
-        set_successfulSets(get_attemptSets()+1);
+        set_successfulSets(get_successfulSets()+1);
         cout << this->name << " set successfully!" << endl;
         return true;
     }
@@ -119,7 +129,7 @@ bool Spiker::attemptSpike () {
     // if spike successful
     if(spikeArray[randomNum] == 1) {
         set_attemptSpikes(get_attemptSpikes()+1);
-        set_successfulSpikes(get_attemptSpikes()+1);
+        set_successfulSpikes(get_successfulSpikes()+1);
         cout << this->name << " spiked successfully!" << endl;
         return true;
     }

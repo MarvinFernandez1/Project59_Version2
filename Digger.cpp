@@ -5,20 +5,29 @@ using namespace std;
 
 
 Digger::Digger () {
-    this->serveAbility = 0;
-    this->digAbility = 0;
-    this->setAbility = 0;
-    this->spikeAbility = 0;
+    cout << "ENTER SKILL LEVEL VALUES!" << endl;
 }
 
 Digger::Digger(string name, int startPosition, string role, int serveAbility, int digAbility, int setAbility, int spikeAbility) {
     this->name = name;
     this->startPosition = startPosition;
     this->role = role;
+    validateSkillLevel(serveAbility);
+    validateSkillLevel(digAbility);
+    validateSkillLevel(setAbility);
+    validateSkillLevel(spikeAbility);
     this->serveAbility = serveAbility;
     this->digAbility = digAbility;
     this->setAbility = setAbility;
     this->spikeAbility = spikeAbility;
+    this->attemptServes = 0;
+    this->attemptDigs = 0;
+    this->attemptSets = 0;
+    this->attemptSpikes = 0;
+    this->successfulServes = 0;
+    this->successfulDigs = 0;
+    this->successfulSets = 0;
+    this->successfulSpikes = 0;
 }
 
 bool Digger::attemptServe () {
@@ -66,7 +75,7 @@ bool Digger::attemptDig() {
     // if dig successful
     if(digArray[randomNum] == 1) {
         set_attemptDigs(get_attemptDigs()+1);
-        set_successfulDigs(get_attemptDigs()+1);
+        set_successfulDigs(get_successfulDigs()+1);
         cout << this->name << " digged successfully!" << endl;
         return true;
     }
@@ -94,7 +103,7 @@ bool Digger::attemptSet () {
     // if set successful
     if(setArray[randomNum] == 1) {
         set_attemptSets(get_attemptSets()+1);
-        set_successfulSets(get_attemptSets()+1);
+        set_successfulSets(get_successfulSets()+1);
         cout << this->name << " set successfully!" << endl;
         return true;
     }
@@ -118,14 +127,14 @@ bool Digger::attemptSpike () {
     int randomNum = rand() % 100;
 
     // if spike successful
-    if(spikeArray[rand() % 100] == 1) {
+    if(spikeArray[randomNum] == 1) {
         set_attemptSpikes(get_attemptSpikes()+1);
-        set_successfulSpikes(get_attemptSpikes()+1);
+        set_successfulSpikes(get_successfulSpikes()+1);
         cout << this->name << " spike successfully!" << endl;
         return true;
     }
     // if spike not successful
-    if(spikeArray[rand() % 100] == 0)  {
+    if(spikeArray[randomNum] == 0)  {
         set_attemptSpikes(get_attemptSpikes()+1);
         cout << this->name << " did not spike successfully." << endl;
         return false;

@@ -2,6 +2,7 @@
 #define SKILL_H
 #include <iostream> 
 #include <string>
+#include <stdexcept>
 using namespace std;
 
 #include "Player.h"
@@ -29,6 +30,8 @@ class Skill : public Player {
     virtual bool attemptDig (int digAbility);
     virtual bool attemptSet (int setAbility);
     virtual bool attemptSpike (int spikeAbility);
+
+    void validateSkillLevel(int skillLevel);
 
 };
 

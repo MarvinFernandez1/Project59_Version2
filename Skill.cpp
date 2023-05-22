@@ -1,6 +1,7 @@
 #include <iostream> 
 #include <string>
 #include <random>
+#include <stdexcept>
 #include "Skill.h"
 using namespace std;
 
@@ -46,4 +47,16 @@ bool Skill::attemptSet (int setAbility) {
 }
 bool Skill::attemptSpike (int spikeAbility) {
     return 0;
+}
+
+void Skill::validateSkillLevel(int skillLevel) {
+    try {
+        if (skillLevel < 1 || skillLevel > 95) {
+            throw std::out_of_range("Invalid skill level: " + std::to_string(skillLevel));
+        }
+    } 
+    catch (const std::out_of_range& e) {
+        std::cerr << e.what() << std::endl;
+        std::exit(1);  // Terminate program
+    }
 }

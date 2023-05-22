@@ -1,5 +1,8 @@
 #include <iostream> 
 #include <string>
+#include <cstdlib>  // header for srand() and rand()
+#include <ctime>    // header for time()
+#include <stdexcept>    // header for exception handling
 #include "Game.h"
 #include "Team.h"
 #include "Setter.h"
@@ -47,15 +50,41 @@ void Game::setScoreTeam2(int scoreTeam2)  {
 int Game::getScoreTeam1()   {return scoreTeam1;}
 int Game::getScoreTeam2()   {return scoreTeam2;}
 
+void Game::setOppDifficulty(string diff)    {
+    this->oppositionDifficulty = diff;
+}
+
+string Game::getOppDifficulty() {
+    return oppositionDifficulty;
+}
+
 // create opposing team
 void Game::createOpposingTeam()  {
+    int skillLvl = 0;
+
+try {
+    if (getOppDifficulty() == "easy") {
+        skillLvl = 55;
+    } else if (getOppDifficulty() == "medium") {
+        skillLvl = 75;
+    } else if (getOppDifficulty() == "hard") {
+        skillLvl = 93;
+    } else {
+        throw std::runtime_error("Invalid input for opposing team difficulty");
+    }
+} 
+catch (const std::exception& e) {
+    std::cout << e.what() << std::endl;
+    std::exit(1);  // Terminate the program
+}
+
     // Create preset players with fixed skill levels
-    Player* player1 = new Setter("Opposing Player 1", 0, "Setter", 93, 93, 93, 93);
-    Player* player2 = new Digger("Opposing Player 2", 1, "Digger", 93, 93, 93, 93);
-    Player* player3 = new Spiker("Opposing Player 3", 2, "Spiker", 93, 82, 82, 82);
-    Player* player4 = new Digger("Opposing Player 4", 3, "Digger", 82, 82, 82, 93);
-    Player* player5 = new Digger("Opposing Player 5", 4, "Digger", 93, 93, 93, 93);
-    Player* player6 = new Spiker("Opposing Player 6", 5, "Spiker", 93, 93, 93, 93);
+    Player* player1 = new Setter("Opposing Player 1", 0, "Setter", skillLvl, skillLvl, skillLvl, skillLvl);
+    Player* player2 = new Digger("Opposing Player 2", 1, "Digger", skillLvl, skillLvl, skillLvl, skillLvl);
+    Player* player3 = new Spiker("Opposing Player 3", 2, "Spiker", skillLvl, skillLvl, skillLvl, skillLvl);
+    Player* player4 = new Digger("Opposing Player 4", 3, "Digger", skillLvl, skillLvl, skillLvl, skillLvl);
+    Player* player5 = new Digger("Opposing Player 5", 4, "Digger", skillLvl, skillLvl, skillLvl, skillLvl);
+    Player* player6 = new Spiker("Opposing Player 6", 5, "Spiker", skillLvl, skillLvl, skillLvl, skillLvl);
 
     // Add the players to the opposing team
     team2->addPlayer(player1);
@@ -64,25 +93,29 @@ void Game::createOpposingTeam()  {
     team2->addPlayer(player4);
     team2->addPlayer(player5);
     team2->addPlayer(player6);
-
 }
 
 
 // start game - initialise two teams in seperate arrays
 void Game::Start_game(Team* enteredTeam) {
+
+    // CHECK 6 PLAYERS ON USER TEAM
+    try {
+        if (enteredTeam->getIndex() != 6)
+            throw std::runtime_error("MUST ADD 6 PLAYERS TO USER TEAM TO START GAME!");
+    }
+
+    catch (const std::exception& e) {
+    std::cout << e.what() << std::endl;
+    std::exit(1);  // Terminate the program
+    }
     
-    // add players individually to team1
-    team1->addPlayer(enteredTeam->getPlayer(0));
-
-    team1->addPlayer(enteredTeam->getPlayer(1));
-
-    team1->addPlayer(enteredTeam->getPlayer(2));
-
-    team1->addPlayer(enteredTeam->getPlayer(3));
-
-    team1->addPlayer(enteredTeam->getPlayer(4));
-    
-    team1->addPlayer(enteredTeam->getPlayer(5));
+    // add players individually to team1 (ONLY ADD PLAYERS IF not nullptr)
+    for (int i = 0; i < 6; i++) {
+        if(enteredTeam->getPlayer(i) != nullptr)    {
+             team1->addPlayer(enteredTeam->getPlayer(i));
+        }
+    }
 
     //list starting Lineup
     cout << "Starting Lineup: " << endl;
@@ -97,6 +130,8 @@ void Game::Start_game(Team* enteredTeam) {
 
 // play function - simulates a game by running through sequence of actions - NEED TO CHANGE SCORES AFTER ACTION
 void Game::play(){ 
+
+std::srand(std::time(0));
 
 while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
     
@@ -131,7 +166,7 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
         while(rallyAction == true)  {
         // determine setter position of team 1
         int positionSetter1 = 0;
-            for(int i=0; i < 5; i++)    {
+            for(int i=0; i < 6; i++)    {
                 if(team1->getPlayer(i)->get_role() == "Setter") {
                     positionSetter1 = i;
                     break;
@@ -140,7 +175,7 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
 
         // determine where setter is
         int positionSetter2 = 0;
-            for(int i=0; i < 5; i++)    {
+            for(int i=0; i < 6; i++)    {
                 if(team2->getPlayer(i)->get_role() == "Setter") {
                     positionSetter2 = i;
                     break;
@@ -280,7 +315,7 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
                         action = true;
                     }
                     else {
-                        setScoreTeam2(getScoreTeam1()+1);
+                        setScoreTeam2(getScoreTeam2()+1);
                         rallyAction = false;
                         action = false;
                         continue;
@@ -292,7 +327,7 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
                         action = true;
                     }
                     else {
-                        setScoreTeam2(getScoreTeam1()+1);
+                        setScoreTeam2(getScoreTeam2()+1);
                         rallyAction = false;
                         action = false;
                         continue;
@@ -304,7 +339,7 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
                         action = true;
                     }
                     else {
-                        setScoreTeam2(getScoreTeam1()+1);
+                        setScoreTeam2(getScoreTeam2()+1);
                         rallyAction = false;
                         action = false;
                         continue;
@@ -320,7 +355,7 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
                     action = true;
                 }
                 else {
-                setScoreTeam2(getScoreTeam1()+1);
+                setScoreTeam2(getScoreTeam2()+1);
                 rallyAction = false;
                 action = false;
                 continue;}
@@ -421,33 +456,28 @@ while(scoreTeam1 < winPoints && scoreTeam2 < winPoints) {
 
 }
 
-//     READ AND WRITE CODEBELOW
-    //takes input and creates a new file that can be opened
-// void .H::NewFile(string newFileName){
-//     cout<<"Enter desired text\n";
-//     cin>>input;
-//     ofstream outFile(newFileName);
-//     outFile << input; //input what you want to put into new file
-//     outFile.close();
-// }
+void Game::outputGameStats()    {
+    // Digs
+    cout << "Game Statistics:" << endl;
+    cout << "# of successful actions - # of attempted actions " << endl;
     
-    //function that creates file
-// void .H::ReadFile(string file){
-//     ifstream inFile(file);
-//     if(inFile.is_open()){
-//         while(getline (inFile,readFile)){
-//         cout<< readFile <<endl;
-//     }
-//     inFile.close();
-//     }
-//     else{
-//         cout << "unable to open file" << endl; 
-//     }
-// }
+    cout << "Serves:" << endl;
+    for(int i = 0; i < 6; i++)  {
+        cout << team1->getPlayer(i)->get_name() << ":" << team1->getPlayer(i)->get_successfulServes() << "-" << team1->getPlayer(i)->get_attemptServes() << endl;
+    }
     
-//        public:
-    //sets data members
-//     string fileName;
-//     string newFileName;
-//     string readFile;
-//     string input;
+    cout << "Digs:" << endl;
+    for(int i = 0; i < 6; i++)  {
+        cout << team1->getPlayer(i)->get_name() << ":" << team1->getPlayer(i)->get_successfulDigs() << "-" << team1->getPlayer(i)->get_attemptDigs() << endl;
+    }
+
+    cout << "Sets:" << endl;
+    for(int i = 0; i < 6; i++)  {
+        cout << team1->getPlayer(i)->get_name() << ":" << team1->getPlayer(i)->get_successfulSets() << "-" << team1->getPlayer(i)->get_attemptSets() << endl;
+    }
+
+    cout << "Spikes:" << endl;
+    for(int i = 0; i < 6; i++)  {
+        cout << team1->getPlayer(i)->get_name() << ":" << team1->getPlayer(i)->get_successfulSpikes() << "-" << team1->getPlayer(i)->get_attemptSpikes() << endl;
+    }
+}

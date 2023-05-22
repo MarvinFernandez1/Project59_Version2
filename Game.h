@@ -24,10 +24,14 @@ class Game {
     void play();
     void printScore();
     void createOpposingTeam();
+    void outputGameStats();
 
     void setScoreTeam1(int scoreTeam1);
     void setScoreTeam2(int scoreTeam2);
+    void setOppDifficulty(string diff);
+    string getOppDifficulty();
     int getScoreTeam1();
     int getScoreTeam2();
+
 };
 #endif
