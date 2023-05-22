@@ -15,7 +15,7 @@ int main() {
 // Enter Players to Play (name, starting position, role on team, serveSkill, digSkill, setSkill, spikeSkill)
     // skill level is valid between 1 and 95!
     Player* P1 = new Digger("Michael",0, "Digger", 90, 85, 85 ,90);
-    Player* P2 = new Spiker("Kien",3,"Spiker",94,92,88,85);
+    Player* P2 = new Spiker("Kien",3,"Spiker",94,92,92,85);
     Player* P3 = new Spiker("Jokic",5,"Spiker",85,85,85,85);
     Player* P4 = new Digger("Lebron",1,"Digger",85,87,85,85);
     Player* P5 = new Spiker("Wilt",2,"Spiker",85,85,85,85);
@@ -52,7 +52,7 @@ int main() {
     // show game stats - yes or no
     round1.outputGameStats(fileCondition);
 
-    // delete players
+    // delete players to free memory on the heap
     delete P1;
     delete P2;
     delete P3;

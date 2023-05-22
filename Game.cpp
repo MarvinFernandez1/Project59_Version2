@@ -463,8 +463,6 @@ void Game::outputGameStats(string fileCondition)    {
     if (fileCondition == "yes") {
     ofstream myfile;
     myfile.open ("gameStats.txt");
-    
-    myfile << "Writing this to a file.\n";
 
     // Digs
     myfile << "Game Statistics:" << endl;
