@@ -14,7 +14,7 @@ using namespace std;
 int main() {
 // Enter Players to Play (name, starting position, role on team, serveSkill, digSkill, setSkill, spikeSkill)
     // skill level is valid between 1 and 95!
-    Player* P1 = new Digger("Michael",0, "Digger", 90, 85, 85 ,90);
+    Player* P1 = new Digger("Michael",0, "Digger", 92, 85, 85 ,90);
     Player* P2 = new Setter("Kien",3,"Setter",94,92,92,85);
     Player* P3 = new Spiker("Jokic",5,"Spiker",85,85,85,85);
     Player* P4 = new Digger("Lebron",1,"Digger",85,87,85,85);
